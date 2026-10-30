@@ -1,0 +1,28 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.text {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.delete {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.delete:hover {
+  color: #d33;
+  border-color: #d33;
+}
