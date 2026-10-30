@@ -7,9 +7,46 @@
   border-radius: 8px;
 }
 
-.text {
+.check {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.body {
   flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.text {
   overflow-wrap: anywhere;
+}
+
+.due {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.done .text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.done .body {
+  opacity: 0.7;
+}
+
+.overdue {
+  border-color: var(--danger);
+}
+
+.overdue .text,
+.overdue .due {
+  color: var(--danger);
 }
 
 .delete {
@@ -23,6 +60,6 @@
 }
 
 .delete:hover {
-  color: #d33;
-  border-color: #d33;
+  color: var(--danger);
+  border-color: var(--danger);
 }

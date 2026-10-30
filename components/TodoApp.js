@@ -13,15 +13,23 @@ export default function TodoApp() {
     saveTodos(todos);
   }, [todos]);
 
-  function addTodo(text) {
+  function addTodo(text, dueDate) {
     const todo = {
       id: crypto.randomUUID(),
       text,
       done: false,
-      dueDate: null,
+      dueDate,
       createdAt: Date.now(),
     };
     setTodos((prev) => [todo, ...prev]);
+  }
+
+  function toggleTodo(id) {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      )
+    );
   }
 
   function deleteTodo(id) {
@@ -31,7 +39,7 @@ export default function TodoApp() {
   return (
     <>
       <TodoForm onAdd={addTodo} />
-      <TodoList todos={todos} onDelete={deleteTodo} />
+      <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
     </>
   );
 }

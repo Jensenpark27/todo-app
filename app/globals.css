@@ -4,6 +4,7 @@
   --border: #ddd;
   --muted: #777;
   --accent: #2563eb;
+  --danger: #dc2626;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,6 +13,7 @@
     --foreground: #ededed;
     --border: #333;
     --muted: #999;
+    --danger: #f87171;
   }
 }
 
