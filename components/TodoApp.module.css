@@ -1,21 +1,7 @@
-.tabs {
+.toolbar {
   display: flex;
-  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
   margin-bottom: 16px;
-}
-
-.tab {
-  padding: 6px 14px;
-  font-size: 14px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-}
-
-.tab[aria-pressed="true"] {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: #fff;
 }
