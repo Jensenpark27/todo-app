@@ -30,9 +30,9 @@ function GroupHeading({ date }) {
   );
 }
 
-export default function TodoGroupedList({ todos, onToggle, onDelete }) {
+export default function TodoGroupedList({ todos, emptyMessage, onToggle, onDelete }) {
   if (todos.length === 0) {
-    return <p className={styles.empty}>할 일이 없습니다</p>;
+    return <p className={styles.empty}>{emptyMessage}</p>;
   }
 
   return (
