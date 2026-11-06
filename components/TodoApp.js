@@ -3,11 +3,19 @@
 import { useEffect, useState } from "react";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
+import TodoGroupedList from "./TodoGroupedList";
 import { loadTodos, saveTodos } from "@/lib/storage";
+import styles from "./TodoApp.module.css";
+
+const VIEWS = [
+  { id: "all", label: "전체" },
+  { id: "date", label: "날짜별" },
+];
 
 export default function TodoApp() {
   // 클라이언트에서만 렌더링되므로 첫 상태를 localStorage에서 바로 읽는다
   const [todos, setTodos] = useState(loadTodos);
+  const [view, setView] = useState("all");
 
   useEffect(() => {
     saveTodos(todos);
@@ -39,7 +47,27 @@ export default function TodoApp() {
   return (
     <>
       <TodoForm onAdd={addTodo} />
-      <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
+      <div className={styles.tabs} role="group" aria-label="보기 방식">
+        {VIEWS.map(({ id, label }) => (
+          <button
+            key={id}
+            className={styles.tab}
+            aria-pressed={view === id}
+            onClick={() => setView(id)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      {view === "all" ? (
+        <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
+      ) : (
+        <TodoGroupedList
+          todos={todos}
+          onToggle={toggleTodo}
+          onDelete={deleteTodo}
+        />
+      )}
     </>
   );
 }
