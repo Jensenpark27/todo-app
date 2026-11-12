@@ -9,7 +9,7 @@ const TodoApp = dynamic(() => import("@/components/TodoApp"), { ssr: false });
 export default function Home() {
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>할 일</h1>
+      <h1 className={styles.title}>할 일 (v2)</h1>
       <TodoApp />
     </main>
   );
